@@ -1,13 +1,13 @@
-/* App.css */
+/* General Styles */
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9; /* Light background color */
-  color: #333; /* Dark text for contrast */
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 header {
-  background-color: #4CAF50; /* Green header */
+  background-color: #4CAF50;
   color: white;
   padding: 20px;
   text-align: center;
@@ -26,6 +26,7 @@ nav ul {
   justify-content: center;
   gap: 15px;
   margin-top: 10px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 nav ul li {
@@ -41,7 +42,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #45a049; /* Slightly darker green for hover */
+  background-color: #45a049;
 }
 
 main {
@@ -64,5 +65,45 @@ footer {
   background-color: #4CAF50;
   color: white;
   margin-top: 20px;
-  
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack links vertically on small screens */
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav ul li a {
+    padding: 10px 20px; /* Larger clickable area on mobile */
+  }
+
+  main {
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  nav ul li a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 10px;
+  }
 }
