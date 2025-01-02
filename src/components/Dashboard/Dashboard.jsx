@@ -38,19 +38,20 @@ const Dashboard = () => {
     dispatch(updateNextScheduled({ id, nextScheduled: value }));
   };
 
-  // Responsive styles
+  // Responsive styles based on screen width
   const containerStyle = {
     fontFamily: 'Arial, sans-serif',
     maxWidth: '880px',
     margin: 'auto',
-    padding: '10px',
+    padding: '20px',
   };
 
   const inputStyle = {
     padding: '10px',
     marginRight: '20px',
     border: '1px solid #ccc',
-    flex: '1 1 300px',
+    width: 'calc(100% - 130px)', // Adjust width dynamically
+    marginBottom: '10px',
   };
 
   const buttonStyle = {
@@ -60,7 +61,7 @@ const Dashboard = () => {
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
-    flex: '1 1 100px',
+    width: '100px',
   };
 
   const tableStyle = {
@@ -75,7 +76,7 @@ const Dashboard = () => {
   };
 
   const tableInputStyle = {
-    width: '80%',
+    width: '90%',
     padding: '5px',
     boxSizing: 'border-box',
   };
@@ -89,26 +90,27 @@ const Dashboard = () => {
     cursor: 'pointer',
   };
 
-  const responsiveStyle = {
-    '@media (max-width: 768px)': {
-      inputStyle: { ...inputStyle, flex: '1 1 100%' },
-      buttonStyle: { ...buttonStyle, flex: '1 1 100%' },
-      tableInputStyle: { width: '100%' },
-    },
-  };
+  const smallScreenStyles = window.innerWidth < 768 ? {
+    inputStyle: { ...inputStyle, width: '100%' },
+    buttonStyle: { ...buttonStyle, width: '100%', marginTop: '10px' },
+    tableInputStyle: { width: '100%' },
+  } : {};
 
   return (
     <div style={containerStyle}>
       <h2>Dashboard</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <input
           type="text"
           value={newCompanyName}
           onChange={(e) => setNewCompanyName(e.target.value)}
           placeholder="Enter Company Name"
-          style={inputStyle}
+          style={{ ...inputStyle, ...smallScreenStyles.inputStyle }}
         />
-        <button onClick={handleAddCompany} style={buttonStyle}>
+        <button
+          onClick={handleAddCompany}
+          style={{ ...buttonStyle, ...smallScreenStyles.buttonStyle }}
+        >
           Add Company
         </button>
       </div>
@@ -130,7 +132,7 @@ const Dashboard = () => {
                   type="date"
                   value={company.communication || ''}
                   onChange={(e) => handleUpdateCommunication(company.id, e.target.value)}
-                  style={tableInputStyle}
+                  style={{ ...tableInputStyle, ...smallScreenStyles.tableInputStyle }}
                 />
               </td>
               <td style={cellStyle}>
@@ -138,7 +140,7 @@ const Dashboard = () => {
                   type="date"
                   value={company.nextScheduled || ''}
                   onChange={(e) => handleUpdateNextScheduled(company.id, e.target.value)}
-                  style={tableInputStyle}
+                  style={{ ...tableInputStyle, ...smallScreenStyles.tableInputStyle }}
                 />
               </td>
               <td style={cellStyle}>
