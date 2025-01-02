@@ -1,3 +1,34 @@
+# Creating React app
+1. npm install -g create-react-app
+2. npx create-react-app calendar-tracking-app
+3. cd calendar-tracking-app
+4. npm install react-router-dom
+5. npm install react-scripts
+6. npm install react-router-dom redux react-redux @mui/material @mui/icons-material formik react-datepicker fullcalendar react-chartjs-2
+7. npm start
+# Project Outline 
+src/
+├── components/
+│   ├── Admin/
+│   │   ├── CompanyForm.jsx
+│   ├── Dashboard/
+│   │   └── Dashboard.jsx
+│   ├── Calendar/
+│   │   └── CalendarView.jsx
+├── pages/
+│   ├── AdminPage.jsx
+│   ├── DashboardPage.jsx
+│   ├── CalendarPage.jsx
+├── redux/
+│   ├── actions/
+│   ├── reducers/
+│   ├── store.js
+├── services/
+│   └── api.js
+├── App.css
+└── App.jsx
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
